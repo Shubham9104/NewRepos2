@@ -24,6 +24,32 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
                         </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">ADMIN PORTAL</a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item"
+                                   asp-area="User1" asp-controller="Categories" asp-action="Index">
+                                    Manage Categories
+                                </a>
+                                <a class="dropdown-item"
+                                   asp-area="User1" asp-controller="Customers" asp-action="Index">
+                                    Manage Customers
+                                </a>
+                                <a class="dropdown-item"
+                                   asp-area="User1" asp-controller="Items" asp-action="Index">
+                                    Manage Items
+                                </a>
+                                <a class="dropdown-item"
+                                   asp-area="User1" asp-controller="Orders" asp-action="Index">
+                                    Manage Orders
+                                </a>
+                                <a class="dropdown-item"
+                                   asp-area="User1" asp-controller="PaymentMethods" asp-action="Index">
+                                    Manage PaymentMethods
+                                </a>
+
+                            </div>
+                        </li>
                     </ul>
                 </div>
             </div>

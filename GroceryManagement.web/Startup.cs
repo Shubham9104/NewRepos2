@@ -8,6 +8,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
+using GroceryManagement.web.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace GroceryManagement.web
 {
@@ -23,6 +26,11 @@ namespace GroceryManagement.web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services
+                .AddDbContext<ApplicationDbContext>((options) =>
+                {
+                    options.UseSqlServer(Configuration.GetConnectionString("MyDefaultConnectionString"));
+                });
             services.AddRazorPages();
         }
 
@@ -50,6 +58,15 @@ namespace GroceryManagement.web
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
+                // Register the ASP.NET Routes for Areas
+                endpoints.MapRazorPages();
+                endpoints.MapControllerRoute(
+                  name: "areas",
+                  pattern: "{area}/{controller}/{action=Index}/{id?}");
+
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }
