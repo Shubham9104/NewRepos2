@@ -26,6 +26,11 @@ namespace GroceryManagement.web.Areas.User1.Controllers
             var applicationDbContext = _context.Items.Include(i => i.Category);
             return View(await applicationDbContext.ToListAsync());
         }
+        public async Task<IActionResult> Index2()
+        {
+            var applicationDbContext = _context.Items.Include(i => i.Category);
+            return View(await applicationDbContext.ToListAsync());
+        }
 
         // GET: User1/Items/Details/5
         public async Task<IActionResult> Details(int? id)

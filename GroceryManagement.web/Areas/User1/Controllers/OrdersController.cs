@@ -26,7 +26,17 @@ namespace GroceryManagement.web.Areas.User1.Controllers
             var applicationDbContext = _context.Orders.Include(o => o.Customers).Include(o => o.Item).Include(o => o.PaymentMethods);
             return View(await applicationDbContext.ToListAsync());
         }
-
+        public async Task<IActionResult> Index1()
+        {
+            var applicationDbContext = _context.Orders.Include(o => o.Customers).Include(o => o.Item).Include(o => o.PaymentMethods);
+            return View(await applicationDbContext.ToListAsync());
+        }
+        public async Task<IActionResult> Index2()
+        {
+            var applicationDbContext = _context.Orders.Include(o => o.Customers).Include(o => o.Item).Include(o => o.PaymentMethods);
+            return View(await applicationDbContext.ToListAsync());
+        }
+     
         // GET: User1/Orders/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -51,7 +61,7 @@ namespace GroceryManagement.web.Areas.User1.Controllers
         // GET: User1/Orders/Create
         public IActionResult Create()
         {
-            ViewData["CustomerId"] = new SelectList(_context.Customers, "CustomerId", "CustomerAddress");
+            ViewData["CustomerId"] = new SelectList(_context.Customers, "CustomerId", "CustomerName");
             ViewData["ItemId"] = new SelectList(_context.Items, "ItemId", "ItemName");
             ViewData["PaymentId"] = new SelectList(_context.PaymentMethods, "PaymentMethodId", "PaymentMethodName");
             return View();
@@ -68,13 +78,16 @@ namespace GroceryManagement.web.Areas.User1.Controllers
             {
                 _context.Add(order);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Index1));
             }
-            ViewData["CustomerId"] = new SelectList(_context.Customers, "CustomerId", "CustomerAddress", order.CustomerId);
+            ViewData["CustomerId"] = new SelectList(_context.Customers, "CustomerId", "CustomerName", order.CustomerId);
             ViewData["ItemId"] = new SelectList(_context.Items, "ItemId", "ItemName", order.ItemId);
             ViewData["PaymentId"] = new SelectList(_context.PaymentMethods, "PaymentMethodId", "PaymentMethodName", order.PaymentId);
             return View(order);
         }
+
+
+
 
         // GET: User1/Orders/Edit/5
         public async Task<IActionResult> Edit(int? id)
@@ -89,7 +102,7 @@ namespace GroceryManagement.web.Areas.User1.Controllers
             {
                 return NotFound();
             }
-            ViewData["CustomerId"] = new SelectList(_context.Customers, "CustomerId", "CustomerAddress", order.CustomerId);
+            ViewData["CustomerId"] = new SelectList(_context.Customers, "CustomerId", "CustomerName", order.CustomerId);
             ViewData["ItemId"] = new SelectList(_context.Items, "ItemId", "ItemName", order.ItemId);
             ViewData["PaymentId"] = new SelectList(_context.PaymentMethods, "PaymentMethodId", "PaymentMethodName", order.PaymentId);
             return View(order);
@@ -127,7 +140,7 @@ namespace GroceryManagement.web.Areas.User1.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CustomerId"] = new SelectList(_context.Customers, "CustomerId", "CustomerAddress", order.CustomerId);
+            ViewData["CustomerId"] = new SelectList(_context.Customers, "CustomerId", "CustomerName", order.CustomerId);
             ViewData["ItemId"] = new SelectList(_context.Items, "ItemId", "ItemName", order.ItemId);
             ViewData["PaymentId"] = new SelectList(_context.PaymentMethods, "PaymentMethodId", "PaymentMethodName", order.PaymentId);
             return View(order);

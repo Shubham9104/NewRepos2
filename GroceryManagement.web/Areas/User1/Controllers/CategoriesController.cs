@@ -25,6 +25,10 @@ namespace GroceryManagement.web.Areas.User1.Controllers
         {
             return View(await _context.Categories.ToListAsync());
         }
+        public async Task<IActionResult> Index2()
+        {
+            return View(await _context.Categories.ToListAsync());
+        }
 
         // GET: User1/Categories/Details/5
         public async Task<IActionResult> Details(int? id)
