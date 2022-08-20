@@ -7,7 +7,7 @@ using GroceryManagement.web.Models;
 
 namespace GroceryManagement.web.Data
 {
-    public class ApplicationDbContext : DbContext
+    public class ApplicationDbContext : IdentityDbContext
     {
         public DbSet<Order> Orders { get; set; }
 
