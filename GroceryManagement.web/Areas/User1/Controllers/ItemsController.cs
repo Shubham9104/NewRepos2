@@ -12,7 +12,9 @@ using Microsoft.AspNetCore.Authorization;
 namespace GroceryManagement.web.Areas.User1.Controllers
 {
     [Area("User1")]
-   
+    [Authorize(Roles = "AppAdmin")]
+
+
     public class ItemsController : Controller
     {
         private readonly ApplicationDbContext _context;
