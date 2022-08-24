@@ -28,7 +28,7 @@
                 @Html.DisplayNameFor(model => model.PaymentMethods)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Price)
+                @Html.DisplayNameFor(model => model.Item.Price)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.OrderPlaced)
@@ -55,18 +55,19 @@
                 @Html.DisplayFor(modelItem => item.PaymentMethods.PaymentMethodName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Price)
+                @Html.DisplayFor(modelItem => item.Item.Price)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.OrderPlaced)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                    <div class="btn btn-dark">
+                @*<a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |*@
+                   
+                        <a asp-action="Details" asp-route-id="@item.Id">Details</a>
+               @* <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>*@
+                   @* <div class="btn btn-dark">
                         <a asp-area="User1" asp-controller="Orders" asp-action="Index2"> DONE  </a>
-                    </div>
+                    </div>*@
             </td>
         </tr>
 }

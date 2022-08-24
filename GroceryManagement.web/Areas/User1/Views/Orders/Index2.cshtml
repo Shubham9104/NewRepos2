@@ -3,23 +3,22 @@
 
    
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Index2";
 }
 
 <h1> Successfully Ordered !!!</h1>
 <br />
 <br />
 
-@foreach (var item in Model) {
 <p>
-            Hello <b style="color:coral">@Html.DisplayFor(modelItem => item.Customers.CustomerName)</b><br />
+            Hello  Customer <br />
 
-        Thank you for your order.<br /> We appreciate your business and will be thrilled to send you <b style="color:dodgerblue">@Html.DisplayFor(modelItem => item.Item.ItemName)</b>
+        Thank you for your order.<br /> We appreciate your business and will be thrilled to send you Item
         as soon as possible.<br /> An email with tracking information will be sent to you once your order has shipped.<br /> 
 
     Thanks again, and we look forward to seeing you soon.
 
 </p>
-}
+
    
 </body>

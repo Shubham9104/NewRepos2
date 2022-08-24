@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+
 namespace GroceryManagement.web.Models
 {
     [Table(name: "Order Details ")]
@@ -13,8 +14,10 @@ namespace GroceryManagement.web.Models
         [Display(Name = "Order ID")]
         public int Id { get; set; }
 
+
         #region
         [Display(Name = "Customer Id")]
+       
         public int CustomerId { get; set; }
         [ForeignKey(nameof(Order.CustomerId))]
         public Customer Customers { get; set; }
@@ -30,6 +33,7 @@ namespace GroceryManagement.web.Models
         #region Item Link 
 
         [Display(Name = "Item")]
+     
         public int ItemId { get; set; }
         [ForeignKey(nameof(Order.ItemId))]
         public Item Item { get; set; }

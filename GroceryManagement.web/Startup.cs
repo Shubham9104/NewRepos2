@@ -11,7 +11,14 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using GroceryManagement.web.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.OpenApi.Models;
 
+// NOTE: add the Nuget Package "Swashbuckle.AspNetCore"
+// to enable Swagger Documentation Generation for OpenAPI documentation.
+
+// Add the assembly attribute, to ensure that the Swagger generates the complete API Documentation.
+[assembly: ApiConventionType(typeof(DefaultApiConventions))]
 namespace GroceryManagement.web
 {
     public class Startup
@@ -46,6 +53,20 @@ namespace GroceryManagement.web
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
             services.AddRazorPages();
+            // Register the MVC Middleware - NEEDED for Swagger Documentation Middleware 
+            services.AddMvc();
+
+            // Register the Swagger Documentation Generation Middleware Service
+            // URL: https://localhost:xxxx/swagger
+            services.AddSwaggerGen(config =>
+            {
+                config.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Version = "v1",
+                    Title = "Grocery Store ",
+                    Description = "Grocery Management System - API version 1"
+                });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -54,6 +75,14 @@ namespace GroceryManagement.web
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                // Add the Swagger Middleware
+                app.UseSwagger();
+
+                // Add the Swagger Documentation Generation Middleware
+                app.UseSwaggerUI(config =>
+                {
+                    config.SwaggerEndpoint("/swagger/v1/swagger.json", "Grocery Web API v1");
+                });
             }
             else
             {

@@ -7,10 +7,12 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using GroceryManagement.web.Data;
 using GroceryManagement.web.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace GroceryManagement.web.Areas.User1.Controllers
 {
     [Area("User1")]
+   
     public class ItemsController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -31,6 +33,72 @@ namespace GroceryManagement.web.Areas.User1.Controllers
             var applicationDbContext = _context.Items.Include(i => i.Category);
             return View(await applicationDbContext.ToListAsync());
         }
+        public async Task<IActionResult> Index3()
+        {
+            var applicationDbContext = _context.Items.Include(i => i.Category);
+            return View(await applicationDbContext.ToListAsync());
+        }
+        public async Task<IActionResult> Index4()
+        {
+            var applicationDbContext = _context.Items.Include(i => i.Category);
+            return View(await applicationDbContext.ToListAsync());
+        }
+        public async Task<IActionResult> Index5()
+        {
+            var applicationDbContext = _context.Items.Include(i => i.Category);
+            return View(await applicationDbContext.ToListAsync());
+        }
+        public async Task<IActionResult> Index6()
+        {
+            var applicationDbContext = _context.Items.Include(i => i.Category);
+            return View(await applicationDbContext.ToListAsync());
+        }
+        public async Task<IActionResult> Index7()
+        {
+            var applicationDbContext = _context.Items.Include(i => i.Category);
+            return View(await applicationDbContext.ToListAsync());
+        }
+        public async Task<IActionResult> Index8()
+        {
+            var applicationDbContext = _context.Items.Include(i => i.Category);
+            return View(await applicationDbContext.ToListAsync());
+        }
+        public async Task<IActionResult> Index9()
+        {
+            var applicationDbContext = _context.Items.Include(i => i.Category);
+            return View(await applicationDbContext.ToListAsync());
+        }
+        public async Task<IActionResult> Index10()
+        {
+            var applicationDbContext = _context.Items.Include(i => i.Category);
+            return View(await applicationDbContext.ToListAsync());
+        }
+        public async Task<IActionResult> Index11()
+        {
+            var applicationDbContext = _context.Items.Include(i => i.Category);
+            return View(await applicationDbContext.ToListAsync());
+        }
+        public async Task<IActionResult> Index12()
+        {
+            var applicationDbContext = _context.Items.Include(i => i.Category);
+            return View(await applicationDbContext.ToListAsync());
+        }
+        public async Task<IActionResult> Index13()
+        {
+            var applicationDbContext = _context.Items.Include(i => i.Category);
+            return View(await applicationDbContext.ToListAsync());
+        }
+        public async Task<IActionResult> Index14()
+        {
+            var applicationDbContext = _context.Items.Include(i => i.Category);
+            return View(await applicationDbContext.ToListAsync());
+        }
+        public async Task<IActionResult> Index15()
+        {
+            var applicationDbContext = _context.Items.Include(i => i.Category);
+            return View(await applicationDbContext.ToListAsync());
+        }
+
 
         // GET: User1/Items/Details/5
         public async Task<IActionResult> Details(int? id)

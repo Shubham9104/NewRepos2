@@ -7,10 +7,12 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using GroceryManagement.web.Data;
 using GroceryManagement.web.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace GroceryManagement.web.Areas.User1.Controllers
 {
     [Area("User1")]
+    [Authorize]
     public class CategoriesController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -26,6 +28,54 @@ namespace GroceryManagement.web.Areas.User1.Controllers
             return View(await _context.Categories.ToListAsync());
         }
         public async Task<IActionResult> Index2()
+        {
+            return View(await _context.Categories.ToListAsync());
+        }
+        public async Task<IActionResult> Index3()
+        {
+            return View(await _context.Categories.ToListAsync());
+        }
+        public async Task<IActionResult> Index4()
+        {
+            return View(await _context.Categories.ToListAsync());
+        }
+        public async Task<IActionResult> Index5()
+        {
+            return View(await _context.Categories.ToListAsync());
+        }
+        public async Task<IActionResult> Index6()
+        {
+            return View(await _context.Categories.ToListAsync());
+        }
+        public async Task<IActionResult> Index7()
+        {
+            return View(await _context.Categories.ToListAsync());
+        }
+        public async Task<IActionResult> Index8()
+        {
+            return View(await _context.Categories.ToListAsync());
+        }
+        public async Task<IActionResult> Index9()
+        {
+            return View(await _context.Categories.ToListAsync());
+        }
+        public async Task<IActionResult> Index10()
+        {
+            return View(await _context.Categories.ToListAsync());
+        }
+        public async Task<IActionResult> Index11()
+        {
+            return View(await _context.Categories.ToListAsync());
+        }
+        public async Task<IActionResult> Index12()
+        {
+            return View(await _context.Categories.ToListAsync());
+        }
+        public async Task<IActionResult> Index13()
+        {
+            return View(await _context.Categories.ToListAsync());
+        }
+        public async Task<IActionResult> Index14()
         {
             return View(await _context.Categories.ToListAsync());
         }

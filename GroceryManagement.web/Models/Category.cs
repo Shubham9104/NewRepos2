@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
+
 namespace GroceryManagement.web.Models
 {
     [Table(name: "Categories")]
@@ -21,6 +23,7 @@ namespace GroceryManagement.web.Models
 
 
         #region Navigate Collection to Item
+        [JsonIgnore]
         public ICollection<Item> Items { get; set; }
         #endregion
 

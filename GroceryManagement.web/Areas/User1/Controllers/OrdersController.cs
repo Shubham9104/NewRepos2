@@ -7,10 +7,12 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using GroceryManagement.web.Data;
 using GroceryManagement.web.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace GroceryManagement.web.Areas.User1.Controllers
 {
     [Area("User1")]
+   
     public class OrdersController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -78,6 +80,38 @@ namespace GroceryManagement.web.Areas.User1.Controllers
             {
                 _context.Add(order);
                 await _context.SaveChangesAsync();
+                //return RedirectToAction(nameof(Index1));
+                return RedirectToAction("Details",new {id = order.Id });
+            }
+            ViewData["CustomerId"] = new SelectList(_context.Customers, "CustomerId", "CustomerName", order.CustomerId);
+            ViewData["ItemId"] = new SelectList(_context.Items, "ItemId", "ItemName", order.ItemId);
+            ViewData["PaymentId"] = new SelectList(_context.PaymentMethods, "PaymentMethodId", "PaymentMethodName", order.PaymentId);
+            return View(order);
+        }
+
+
+
+
+
+        public IActionResult Create1()
+        {
+            ViewData["CustomerId"] = new SelectList(_context.Customers, "CustomerId", "CustomerName");
+            ViewData["ItemId"] = new SelectList(_context.Items, "ItemId", "ItemName");
+            ViewData["PaymentId"] = new SelectList(_context.PaymentMethods, "PaymentMethodId", "PaymentMethodName");
+            return View();
+        }
+
+        // POST: User1/Orders/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create1([Bind("Id,CustomerId,Date,ItemId,Quantity,PaymentId,Price,OrderPlaced")] Order order)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(order);
+                await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index1));
             }
             ViewData["CustomerId"] = new SelectList(_context.Customers, "CustomerId", "CustomerName", order.CustomerId);
@@ -85,6 +119,8 @@ namespace GroceryManagement.web.Areas.User1.Controllers
             ViewData["PaymentId"] = new SelectList(_context.PaymentMethods, "PaymentMethodId", "PaymentMethodName", order.PaymentId);
             return View(order);
         }
+
+
 
 
 

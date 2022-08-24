@@ -1,4 +1,5 @@
 ﻿
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -17,7 +18,7 @@ namespace GroceryManagement.web.Models
 
         #region Directing to Item Category
 
-
+        [JsonIgnore]
         [Display(Name = "Item Category")]
         public int CategoryID { get; set; }
         [ForeignKey(nameof(Item.CategoryID))]
@@ -47,6 +48,7 @@ namespace GroceryManagement.web.Models
         public string ImgUrl { get; set; } = null;
 
         #region Navigate Collection to Order
+        [JsonIgnore]
         public ICollection<Order> Orders { get; set; }
         #endregion
 

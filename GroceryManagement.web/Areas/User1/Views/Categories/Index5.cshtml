@@ -1,0 +1,47 @@
+﻿@model IEnumerable<GroceryManagement.web.Models.Category>
+
+@{
+    ViewData["Title"] = "Index5";
+}
+
+<h1>Index</h1>
+
+<p>
+
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Categories)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+
+        {
+            if (item.Categories == "Bervages")
+            {
+                <tr>
+                    <td>
+                        <div class="btn btn-dark">
+                            <a asp-area="User1" asp-controller="Items" asp-action="Index6"> @Html.DisplayFor(modelItem => item.Categories)  </a>
+                        </div>
+
+                    </td>
+                    <td>
+                        @*<a asp-action="Edit" asp-route-id="@item.IcId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.IcId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.IcId">Delete</a>*@
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+
+</table>
+<div class="btn btn-dark">
+    <a asp-area="User1" asp-controller="Items" asp-action="Index2"> GO TO ITEMS  </a>
+</div>

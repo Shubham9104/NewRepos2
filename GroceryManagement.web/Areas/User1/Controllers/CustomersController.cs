@@ -7,10 +7,12 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using GroceryManagement.web.Data;
 using GroceryManagement.web.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace GroceryManagement.web.Areas.User1.Controllers
 {
     [Area("User1")]
+    [Authorize]
     public class CustomersController : Controller
     {
         private readonly ApplicationDbContext _context;
