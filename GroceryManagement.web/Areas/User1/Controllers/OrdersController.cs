@@ -13,8 +13,10 @@ namespace GroceryManagement.web.Areas.User1.Controllers
 {
     [Area("User1")]
    
+
     public class OrdersController : Controller
     {
+        private static int itemId;
         private readonly ApplicationDbContext _context;
 
         public OrdersController(ApplicationDbContext context)
@@ -23,6 +25,7 @@ namespace GroceryManagement.web.Areas.User1.Controllers
         }
 
         // GET: User1/Orders
+       
         public async Task<IActionResult> Index()
         {
             var applicationDbContext = _context.Orders.Include(o => o.Customers).Include(o => o.Item).Include(o => o.PaymentMethods);
@@ -61,10 +64,14 @@ namespace GroceryManagement.web.Areas.User1.Controllers
         }
 
         // GET: User1/Orders/Create
-        public IActionResult Create()
+
+        [Authorize(Roles = "AppAdmin")]
+        public IActionResult Create(int id)
         {
+            itemId = id;
+            
             ViewData["CustomerId"] = new SelectList(_context.Customers, "CustomerId", "CustomerName");
-            ViewData["ItemId"] = new SelectList(_context.Items, "ItemId", "ItemName");
+            //ViewData["ItemId"] = new SelectList(_context.Items, "ItemId", "ItemName");
             ViewData["PaymentId"] = new SelectList(_context.PaymentMethods, "PaymentMethodId", "PaymentMethodName");
             return View();
         }
@@ -74,8 +81,9 @@ namespace GroceryManagement.web.Areas.User1.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,CustomerId,Date,ItemId,Quantity,PaymentId,Price,OrderPlaced")] Order order)
+        public async Task<IActionResult> Create([Bind("CustomerId,Date,Quantity,PaymentId,Price,OrderPlaced")] Order order)
         {
+            order.ItemId = itemId;
             if (ModelState.IsValid)
             {
                 _context.Add(order);

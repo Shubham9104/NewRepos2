@@ -12,7 +12,8 @@ using Microsoft.AspNetCore.Authorization;
 namespace GroceryManagement.web.Areas.User1.Controllers
 {
     [Area("User1")]
-    [Authorize]
+    [Authorize(Roles = "AppAdmin")]
+
     public class PaymentMethodsController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -23,6 +24,7 @@ namespace GroceryManagement.web.Areas.User1.Controllers
         }
 
         // GET: User1/PaymentMethods
+        
         public async Task<IActionResult> Index()
         {
             return View(await _context.PaymentMethods.ToListAsync());

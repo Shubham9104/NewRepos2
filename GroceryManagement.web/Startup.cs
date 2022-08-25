@@ -51,7 +51,8 @@ namespace GroceryManagement.web
             services
                  //.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                  .AddIdentity<IdentityUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultTokenProviders(); 
 
             //services.AddRazorPages();
             // And Register the Authorization Policy to the Area OR Page pertaining to Razor Pages in the Area(s).

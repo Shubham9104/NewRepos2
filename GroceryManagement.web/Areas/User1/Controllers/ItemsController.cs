@@ -15,6 +15,7 @@ namespace GroceryManagement.web.Areas.User1.Controllers
     [Authorize(Roles = "AppAdmin")]
 
 
+
     public class ItemsController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -25,12 +26,16 @@ namespace GroceryManagement.web.Areas.User1.Controllers
         }
 
         // GET: User1/Items
+       
         public async Task<IActionResult> Index()
         {
             var applicationDbContext = _context.Items.Include(i => i.Category);
             return View(await applicationDbContext.ToListAsync());
         }
+
+    
         public async Task<IActionResult> Index2()
+
         {
             var applicationDbContext = _context.Items.Include(i => i.Category);
             return View(await applicationDbContext.ToListAsync());
@@ -122,8 +127,10 @@ namespace GroceryManagement.web.Areas.User1.Controllers
         }
 
         // GET: User1/Items/Create
+    
         public IActionResult Create()
         {
+
             ViewData["CategoryID"] = new SelectList(_context.Categories, "IcId", "Categories");
             return View();
         }

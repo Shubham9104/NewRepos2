@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using GroceryManagement.web.Data;
 using GroceryManagement.web.Models;
+using Microsoft.Extensions.Logging;
 
 namespace GroceryManagement.web.Controllers
 {
@@ -15,31 +16,63 @@ namespace GroceryManagement.web.Controllers
     public class CategoriesController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
+        private readonly ILogger<CategoriesController> _logger;
 
-        public CategoriesController(ApplicationDbContext context)
+        public CategoriesController(
+             ApplicationDbContext context,
+             ILogger<CategoriesController> logger)
         {
             _context = context;
+            _logger = logger;
         }
 
         // GET: api/Categories
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Category>>> GetCategories()
+
+        public async Task<IActionResult> GetCategories()
         {
-            return await _context.Categories.ToListAsync();
+            try
+            {
+                var pc = await _context.Categories.ToListAsync(); // pc =  product categories
+                if (pc == null)
+                {
+                    _logger.LogWarning("No Categories were found");
+                    return NotFound();
+                }
+                _logger.LogInformation("Extracted all the categories");
+                return Ok(pc);
+            }
+            catch
+            {
+                _logger.LogError("Attempt made to retrieve information");
+                return BadRequest();
+            }
         }
+        //public async Task<ActionResult<IEnumerable<Category>>> GetCategories()
+        //{
+        //    return await _context.Categories.ToListAsync();
+        //}
 
         // GET: api/Categories/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Category>> GetCategory(int id)
+        public async Task<ActionResult> GetCategory(int? id)
         {
-            var category = await _context.Categories.FindAsync(id);
-
-            if (category == null)
+            if (!id.HasValue)
             {
-                return NotFound();
+                return BadRequest();
             }
-
-            return category;
+            try
+            {
+                var category = await _context.Categories.FindAsync(id);
+                if(category == null) { return NotFound(); } 
+                return Ok(category);
+            }
+            catch
+            {
+                return BadRequest();
+            }
+          
+            
         }
 
         // PUT: api/Categories/5
@@ -88,18 +121,30 @@ namespace GroceryManagement.web.Controllers
 
         // DELETE: api/Categories/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Category>> DeleteCategory(int id)
+        public async Task<ActionResult> DeleteCategory(int? id)
         {
-            var category = await _context.Categories.FindAsync(id);
-            if (category == null)
+            if (!id.HasValue)
             {
-                return NotFound();
+                return BadRequest();
+            }
+            try
+            {
+                var Category = await _context.Categories.FindAsync(id);
+                if (Category == null)
+                {
+                    return NotFound();
+                }
+
+                _context.Categories.Remove(Category);
+                await _context.SaveChangesAsync();
+
+                return Ok(Category);
+            }
+            catch
+            {
+                return BadRequest();
             }
 
-            _context.Categories.Remove(category);
-            await _context.SaveChangesAsync();
-
-            return category;
         }
 
         private bool CategoryExists(int id)

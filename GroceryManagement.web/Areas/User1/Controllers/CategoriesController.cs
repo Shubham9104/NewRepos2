@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
+
 using Microsoft.EntityFrameworkCore;
 using GroceryManagement.web.Data;
 using GroceryManagement.web.Models;
@@ -12,7 +11,9 @@ using Microsoft.AspNetCore.Authorization;
 namespace GroceryManagement.web.Areas.User1.Controllers
 {
     [Area("User1")]
-    [Authorize]
+    [Authorize(Roles = "AppAdmin")]
+
+
     public class CategoriesController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -23,6 +24,7 @@ namespace GroceryManagement.web.Areas.User1.Controllers
         }
 
         // GET: User1/Categories
+       
         public async Task<IActionResult> Index()
         {
             return View(await _context.Categories.ToListAsync());

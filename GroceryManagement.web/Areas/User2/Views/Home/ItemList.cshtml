@@ -1,0 +1,54 @@
+﻿@model IEnumerable<GroceryManagement.web.Models.Item>
+
+@{
+    ViewData["Title"] = "Index2";
+}
+
+<h1>Index</h1>
+
+
+
+<body>
+    @foreach (var item in Model)
+    {
+
+        <div class="card text-center  bg-dark" style="width:16.2rem;float:left;overflow:hidden;margin:1rem;color:white">
+
+            <img class="card-img-top" src="@item.ImgUrl" alt="@item.ItemName" style="width:17rem;height:14rem;">
+
+            <h4 class="card-title font-italic font-weight-normal" style="background-color:#CCA43B">
+                @item.ItemName
+            </h4>
+            <div class="row">
+                <div class="col card-text">
+                    @Html.DisplayNameFor(modelItem => item.Price)
+                </div>
+                <div class="col card-text">
+                    @Html.DisplayFor(modelItem => item.Price)
+                </div>
+                <div class="col card-text">
+                    @Html.DisplayNameFor(modelItem => item.Available)
+                </div>
+                <div class="col card-text">
+                    @Html.DisplayFor(modelItem => item.Available)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col card-text" style="background-color:#9b5de5">
+                    @Html.DisplayFor(modelItem => item.Category.Categories)
+                </div>
+
+            </div>
+
+
+            <div class="card-footer">
+                <a asp-area="User2" asp-controller="Home" asp-action="BookOrder" asp-route-id="@item.ItemId" class="btn btn-primary" style="background-color:#ffe5d9">Order Now</a>
+
+
+            </div>
+
+
+        </div>
+    }
+</body>
+
