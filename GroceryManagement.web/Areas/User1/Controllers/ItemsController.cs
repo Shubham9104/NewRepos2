@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace GroceryManagement.web.Areas.User1.Controllers
 {
     [Area("User1")]
-    [Authorize(Roles = "AppAdmin")]
+    
 
 
 
@@ -33,73 +33,99 @@ namespace GroceryManagement.web.Areas.User1.Controllers
             return View(await applicationDbContext.ToListAsync());
         }
 
-    
+        [Authorize(Roles = "AppUser")]
         public async Task<IActionResult> Index2()
 
         {
             var applicationDbContext = _context.Items.Include(i => i.Category);
             return View(await applicationDbContext.ToListAsync());
         }
+
+        [Authorize(Roles = "AppUser")]
         public async Task<IActionResult> Index3()
         {
             var applicationDbContext = _context.Items.Include(i => i.Category);
             return View(await applicationDbContext.ToListAsync());
         }
+
+        [Authorize(Roles = "AppUser")]
         public async Task<IActionResult> Index4()
         {
             var applicationDbContext = _context.Items.Include(i => i.Category);
             return View(await applicationDbContext.ToListAsync());
         }
+
+        [Authorize(Roles = "AppUser")]
         public async Task<IActionResult> Index5()
         {
             var applicationDbContext = _context.Items.Include(i => i.Category);
             return View(await applicationDbContext.ToListAsync());
         }
+
+        [Authorize(Roles = "AppUser")]
         public async Task<IActionResult> Index6()
         {
             var applicationDbContext = _context.Items.Include(i => i.Category);
             return View(await applicationDbContext.ToListAsync());
         }
+
+        [Authorize(Roles = "AppUser")]
         public async Task<IActionResult> Index7()
         {
             var applicationDbContext = _context.Items.Include(i => i.Category);
             return View(await applicationDbContext.ToListAsync());
         }
+
+        [Authorize(Roles = "AppUser")]
         public async Task<IActionResult> Index8()
         {
             var applicationDbContext = _context.Items.Include(i => i.Category);
             return View(await applicationDbContext.ToListAsync());
         }
+
+        [Authorize(Roles = "AppUser")]
         public async Task<IActionResult> Index9()
         {
             var applicationDbContext = _context.Items.Include(i => i.Category);
             return View(await applicationDbContext.ToListAsync());
         }
+
+        [Authorize(Roles = "AppUser")]
         public async Task<IActionResult> Index10()
         {
             var applicationDbContext = _context.Items.Include(i => i.Category);
             return View(await applicationDbContext.ToListAsync());
         }
+
+        [Authorize(Roles = "AppUser")]
         public async Task<IActionResult> Index11()
         {
             var applicationDbContext = _context.Items.Include(i => i.Category);
             return View(await applicationDbContext.ToListAsync());
         }
+
+        [Authorize(Roles = "AppUser")]
         public async Task<IActionResult> Index12()
         {
             var applicationDbContext = _context.Items.Include(i => i.Category);
             return View(await applicationDbContext.ToListAsync());
         }
+
+        [Authorize(Roles = "AppUser")]
         public async Task<IActionResult> Index13()
         {
             var applicationDbContext = _context.Items.Include(i => i.Category);
             return View(await applicationDbContext.ToListAsync());
         }
+
+        [Authorize(Roles = "AppUser")]
         public async Task<IActionResult> Index14()
         {
             var applicationDbContext = _context.Items.Include(i => i.Category);
             return View(await applicationDbContext.ToListAsync());
         }
+
+        [Authorize(Roles = "AppUser")]
         public async Task<IActionResult> Index15()
         {
             var applicationDbContext = _context.Items.Include(i => i.Category);
@@ -127,7 +153,8 @@ namespace GroceryManagement.web.Areas.User1.Controllers
         }
 
         // GET: User1/Items/Create
-    
+
+        [Authorize(Roles = "AppAdmin")]
         public IActionResult Create()
         {
 

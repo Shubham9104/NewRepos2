@@ -1,17 +1,18 @@
 ﻿@model IEnumerable<GroceryManagement.web.Models.Order>
 
+<body style="background-image:url(https://media.assets.sincrod.com/websites/content/nissan-hill-fl/dd6ab10ed8fd4a6784e28e368f41f374_c21x0-1557x875.jpg ); background-size:cover">
 @{
     ViewData["Title"] = "Index1";
 }
 
-<h1>Index</h1>
-
+<h1>View Orders</h1>
+@*
 <p>
-    @*<a asp-action="Create">Create New</a>*@
+    <a asp-action="Create">Create New</a>
     <div class="btn btn-dark">
-        <a asp-area="User1" asp-controller="Orders" asp-action="Create"> Create New  </a>
+        <a asp-area="User1" asp-controller="Orders" asp-action="Create"> </a>
     </div>
-</p>
+</p>*@
 <table class="table">
     <thead>
         <tr>
@@ -81,3 +82,4 @@
 }
     </tbody>
 </table>
+</body>

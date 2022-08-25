@@ -15,9 +15,9 @@ namespace GroceryManagement.web.Areas.User1.Controllers
 
 
     public class CategoriesController : Controller
-    {
+    {  //exp  injected 
         private readonly ApplicationDbContext _context;
-
+        // context - all table data
         public CategoriesController(ApplicationDbContext context)
         {
             _context = context;
@@ -77,7 +77,7 @@ namespace GroceryManagement.web.Areas.User1.Controllers
         {
             return View(await _context.Categories.ToListAsync());
         }
-        public async Task<IActionResult> Index14()
+        public async Task<IActionResult> Index14() //iaction - interface
         {
             return View(await _context.Categories.ToListAsync());
         }
@@ -101,7 +101,7 @@ namespace GroceryManagement.web.Areas.User1.Controllers
         }
 
         // GET: User1/Categories/Create
-        public IActionResult Create()
+        public IActionResult Create()   //shows views
         {
             return View();
         }
@@ -110,7 +110,7 @@ namespace GroceryManagement.web.Areas.User1.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        [ValidateAntiForgeryToken]   //update database
         public async Task<IActionResult> Create([Bind("IcId,Categories")] Category category)
         {
             if (ModelState.IsValid)

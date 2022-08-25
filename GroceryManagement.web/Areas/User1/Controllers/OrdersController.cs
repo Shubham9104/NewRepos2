@@ -25,7 +25,7 @@ namespace GroceryManagement.web.Areas.User1.Controllers
         }
 
         // GET: User1/Orders
-       
+        [Authorize(Roles = "AppAdmin")]
         public async Task<IActionResult> Index()
         {
             var applicationDbContext = _context.Orders.Include(o => o.Customers).Include(o => o.Item).Include(o => o.PaymentMethods);
@@ -65,7 +65,7 @@ namespace GroceryManagement.web.Areas.User1.Controllers
 
         // GET: User1/Orders/Create
 
-        [Authorize(Roles = "AppAdmin")]
+        [Authorize(Roles = "AppUser")]
         public IActionResult Create(int id)
         {
             itemId = id;
