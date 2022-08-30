@@ -12,6 +12,7 @@ using Xunit;
 using Xunit.Abstractions;
 using GroceryManagement.web.Controllers;
 using GroceryManagement.web.Models;
+using System.Net.Sockets;
 
 namespace GroceryManagementxUnitTestProject
 {
@@ -21,9 +22,12 @@ namespace GroceryManagementxUnitTestProject
         [Fact]
         public void GetCategories_OkResult()
         {
+            //saves category to database
             var dbName = nameof(CategoriesApiTests.GetCategories_OkResult);
+            //Create the mocked logger that is injected into Categories Controller
             var logger = Mock.Of<ILogger<CategoriesController>>();
             using var dbContext = DbContextMocker.GetApplicationDbContext(dbName);
+            //invoke controller call
             var controller = new CategoriesController(dbContext, logger);
 
             IActionResult actionresult = controller.GetCategories().Result;

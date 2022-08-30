@@ -1,5 +1,4 @@
-﻿using GroceryManagement.web.Areas.User2.ViewModels;
-using GroceryManagement.web.Data;
+﻿using GroceryManagement.web.Data;
 using GroceryManagement.web.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -9,8 +8,6 @@ using Microsoft.EntityFrameworkCore;
 //using Restaurant.Web.Areas.OrderNow.ViewModels;
 //using Restaurant.Web.Data;
 //using Restaurant.Web.Models;
-using System.Collections.Generic;
-using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 

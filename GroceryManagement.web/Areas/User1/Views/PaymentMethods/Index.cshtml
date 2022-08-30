@@ -1,13 +1,16 @@
 ﻿@model IEnumerable<GroceryManagement.web.Models.PaymentMethod>
-
+<body style="background-image:url(https://i.pinimg.com/originals/f8/39/4d/f8394dfa97526826b31823593b61d138.jpg); background-size:cover">
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>All Payment's method available</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <div class="btn btn-dark">
+        <a asp-action="Create">Add New Payment Method </a>
+    </div>
+    
 </p>
 <table class="table">
     <thead>
@@ -39,3 +42,4 @@
 }
     </tbody>
 </table>
+</body>

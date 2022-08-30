@@ -18,7 +18,7 @@ namespace GroceryManagement.web.Models
 
         [Required(ErrorMessage = "Don't leave {0} Empty!")]
         [Column(TypeName = "varchar(100)")]
-        [Display(Name = "Item Categories")]
+        [Display(Name = "Item Categories")] //category name
         public string Categories { get; set; }
 
 
